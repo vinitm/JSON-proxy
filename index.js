@@ -13,6 +13,7 @@ app.get(['/api/v2/list_movies.json', '/ajax/search'], function(req, res) {
 
 
 app.get('/*', function(req, res) {
+	res.status(403);
 	res.end();
 });
 
