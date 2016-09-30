@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "request": "^2.75.0",
-    "valid-url": "^1.0.9"
+    "request": "^2.75.0"
   }
 }

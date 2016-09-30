@@ -1,21 +1,19 @@
 var express = require('express');
 var request = require('request');
 var config = require('./config');
-var validUrl = require('valid-url');
 var app = express();
 
-app.get('/*', function(req, res) {
-	var url = req.query.url;
-	if (validUrl.isUri(url)) {
-		request.get(url)
-			.on('error', function(err) {
-				console.log(err);
-			}).pipe(res);
-	} else {
-		console.log(url + ' is not a URL');
-		res.end();
-	}
+app.get(['/api/v2/list_movies.json', '/ajax/search'], function(req, res) {
+	var url = config.baseUrl + req.originalUrl;
+	request.get(url)
+		.on('error', function(err) {
+			console.log(err);
+		}).pipe(res);
+});
 
+
+app.get('/*', function(req, res) {
+	res.end();
 });
 
 app.listen(config.port, function() {
