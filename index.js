@@ -3,7 +3,13 @@ var request = require('request');
 var config = require('./config');
 var app = express();
 
-app.get(['/api/v2/list_movies.json', '/ajax/search', '/assets/images/movies/*'], function(req, res) {
+var allowedURLs = [
+	'/api/v2/list_movies.json',
+	'/ajax/search',
+	'/assets/images/movies/*',
+	'/torrent/*'
+];
+app.get(allowedURLs, function(req, res) {
 	var url = config.baseUrl + req.originalUrl;
 	request.get(url)
 		.on('error', function(err) {
