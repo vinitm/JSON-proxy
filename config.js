@@ -1,4 +1,4 @@
 module.exports = {
 	port: process.env.PORT || 8000,
-	baseUrl: 'https://yts.ag'
+	baseUrl: 'https://yts.am'
 };
